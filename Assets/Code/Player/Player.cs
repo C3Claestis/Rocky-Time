@@ -4,17 +4,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance { get; private set; }
     [SerializeField] float speed = 5f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
-
     Rigidbody2D rb;
     Animator anim;
+    float dirX;
     bool facingRight = true;
     bool isGrounded;
 
+    public float GetDirX()
+    {
+        if (dirX < 0)
+        {
+            dirX *= -1;
+        }
+        return dirX * 2;
+    }
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +50,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        float dirX = Input.GetAxis("Horizontal");
+        dirX = Input.GetAxis("Horizontal");
 
         rb.velocity = new Vector2(dirX * speed, rb.velocity.y);
 
