@@ -6,17 +6,19 @@ public class MekanikTapPuzzle : MonoBehaviour
 {
     [SerializeField] Transform pointA; // Titik pertama
     [SerializeField] Transform pointB; // Titik kedua
-    [SerializeField] Transform buttonMekanik;
+    [SerializeField] Transform pointBarrierUp; // Titik Barrier up
+    [SerializeField] Transform buttonMekanik; // Button Untuk Solve puzzle
+    [SerializeField] Transform Barrier; // Barrier objek
     bool isSolve = false;
-    float speed = 1.5f; // Kecepatan pergerakan
+    float speed = 1.0f; // Kecepatan pergerakan
 
-    public void SetSolve(bool isSolves) => this.isSolve = isSolves;
-    private Vector3 targetPoint; // Titik tujuan saat ini
-
+    private Vector2 targetPoint; // Titik tujuan saat ini
+    private Vector2 targetPointBarrierUp; // Titik tujuan dari barrier up
     void Start()
     {
         // Mulai dengan bergerak ke titik B
         targetPoint = pointB.position;
+        targetPointBarrierUp = pointBarrierUp.position;
     }
 
     void Update()
@@ -24,6 +26,17 @@ public class MekanikTapPuzzle : MonoBehaviour
         if (isSolve)
         {
             MoveButtonDown();
+            BarrierUp();
+        }
+    }
+    void BarrierUp()
+    {
+        Barrier.position = Vector3.MoveTowards(Barrier.position, targetPointBarrierUp, speed * 2 * Time.deltaTime);
+
+        if (Vector3.Distance(Barrier.position, targetPointBarrierUp) < 0.1f)
+        {
+            Barrier.position = targetPointBarrierUp;
+            isSolve = false;
         }
     }
     void MoveButtonDown()
@@ -46,4 +59,6 @@ public class MekanikTapPuzzle : MonoBehaviour
             Gizmos.DrawLine(pointA.position, pointB.position);
         }
     }
+
+    public void SetSolve(bool isSolves) => this.isSolve = isSolves;
 }
