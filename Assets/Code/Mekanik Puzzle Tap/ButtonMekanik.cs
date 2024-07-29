@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ButtonMekanik : MonoBehaviour
+namespace Puzzle
 {
-    [SerializeField] MekanikTapPuzzle mekanikTapPuzzle;
-    
-    void OnTriggerStay2D(Collider2D collision)
+    public class ButtonMekanik : MonoBehaviour
     {
-        if (collision.CompareTag("Environment"))
+        [SerializeField] MekanikTapPuzzle mekanikTapPuzzle;
+
+        void OnTriggerStay2D(Collider2D collision)
         {
-            mekanikTapPuzzle.SetSolve(true);
-            Debug.Log("SOLVEPUZZLE");
+            if (collision.CompareTag("Environment"))
+            {
+                mekanikTapPuzzle.SetSolve(true);
+                Debug.Log("SOLVEPUZZLE");
+            }
         }
     }
 }
