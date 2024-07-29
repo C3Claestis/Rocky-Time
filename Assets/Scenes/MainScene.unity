@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 617350130}
   - component: {fileID: 617350131}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: Puzzle-Tap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1576,7 +1576,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1681284206}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1251f40e0cb8c5a4ca32d15f627a5b4c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2225,7 +2225,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2147284534}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1251f40e0cb8c5a4ca32d15f627a5b4c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

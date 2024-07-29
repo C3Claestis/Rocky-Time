@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class MekanikTapPuzzle : MonoBehaviour
 {
+    [Header("Point Moving Button")]
     [SerializeField] Transform pointA; // Titik pertama
     [SerializeField] Transform pointB; // Titik kedua
+    [Header("Point Barrier")]    
     [SerializeField] Transform pointBarrierUp; // Titik Barrier up
+    [Header("Button Object")]
     [SerializeField] Transform buttonMekanik; // Button Untuk Solve puzzle
+    [Header("Barrier Object")]
     [SerializeField] Transform Barrier; // Barrier objek
     bool isSolve = false;
     float speed = 1.0f; // Kecepatan pergerakan
