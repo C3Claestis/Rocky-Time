@@ -37,9 +37,9 @@ namespace Puzzle
         }
         void BarrierUp()
         {
-            Barrier.position = Vector3.MoveTowards(Barrier.position, targetPointBarrierUp, speed * 2 * Time.deltaTime);
+            Barrier.position = Vector2.MoveTowards(Barrier.position, targetPointBarrierUp, speed * 2 * Time.deltaTime);
 
-            if (Vector3.Distance(Barrier.position, targetPointBarrierUp) < 0.1f)
+            if (Vector2.Distance(Barrier.position, targetPointBarrierUp) < 0.1f)
             {
                 Barrier.position = targetPointBarrierUp;
                 isSolve = false;
@@ -48,10 +48,10 @@ namespace Puzzle
         void MoveButtonDown()
         {
             // Gerakkan objek menuju target point
-            buttonMekanik.position = Vector3.MoveTowards(buttonMekanik.position, targetPoint, speed * Time.deltaTime);
+            buttonMekanik.position = Vector2.MoveTowards(buttonMekanik.position, targetPoint, speed * Time.deltaTime);
 
             // Jika objek sudah dekat dengan target point, ubah target point ke titik yang lain
-            if (Vector3.Distance(buttonMekanik.position, targetPoint) < 0.1f)
+            if (Vector2.Distance(buttonMekanik.position, targetPoint) < 0.1f)
             {
                 buttonMekanik.position = targetPoint;
             }

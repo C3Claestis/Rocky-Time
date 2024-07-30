@@ -2,17 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerLift : MonoBehaviour
+namespace Puzzle
 {
-    // Start is called before the first frame update
-    void Start()
+    public class TriggerLift : MonoBehaviour
     {
-        
-    }
+        [SerializeField] MekanikLiftEmberPuzzle liftEmberPuzzle;
+        private int CountPlayer = 1;
+        private HashSet<Collider2D> triggerColliders = new HashSet<Collider2D>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                triggerColliders.Add(other);
+
+                if (triggerColliders.Count == CountPlayer)
+                {
+                    liftEmberPuzzle.SetSolve(true);
+                    liftEmberPuzzle.SetIsNotSolve(false);
+                    Debug.Log("Player Active : " + triggerColliders.Count);
+                }
+            }
+        }
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                triggerColliders.Remove(other);
+                liftEmberPuzzle.SetIsNotSolve(true);
+            }
+        }
     }
 }
