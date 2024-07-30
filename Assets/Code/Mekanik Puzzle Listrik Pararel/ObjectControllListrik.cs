@@ -14,7 +14,7 @@ namespace Puzzle
         [SerializeField] byte PararelNumbers;
         float valueRotasi;
         bool isInTrigger = false;
-        float changeSpeed = 10f; // kecepatan perubahan
+        float changeSpeed = 20f; // kecepatan perubahan
 
         // Start is called before the first frame update
         void Start()

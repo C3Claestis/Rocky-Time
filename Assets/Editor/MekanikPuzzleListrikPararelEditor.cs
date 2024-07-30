@@ -18,7 +18,7 @@ namespace Puzzle
 
             SerializedProperty jumlahSambungan = serializedObject.FindProperty("JumlahSambungan");
 
-            EditorGUILayout.PropertyField(jumlahSambungan);
+            EditorGUILayout.PropertyField(jumlahSambungan);            
 
             byte jumlah = (byte)jumlahSambungan.intValue;
 
@@ -29,6 +29,7 @@ namespace Puzzle
             ShowList("SaklarSambunganIV", 4, jumlah);
             ShowList("SaklarSambunganV", 5, jumlah);
 
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("triggerCompletes"), true);    
             serializedObject.ApplyModifiedProperties();
         }
 

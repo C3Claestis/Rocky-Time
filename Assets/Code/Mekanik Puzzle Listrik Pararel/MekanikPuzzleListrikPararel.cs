@@ -18,6 +18,8 @@ namespace Puzzle
         [Range(1, 5)]
         [SerializeField] byte JumlahSambungan;
 
+        [Header("Trigger Complets")]
+        [SerializeField] List<TriggerComplete> triggerCompletes = new List<TriggerComplete>();
         private Dictionary<byte, float> rotasiValues = new Dictionary<byte, float>();
         private Dictionary<byte, List<Transform>> saklarSambungans = new Dictionary<byte, List<Transform>>();
 
@@ -49,6 +51,14 @@ namespace Puzzle
             for (byte i = 1; i <= JumlahSambungan; i++)
             {
                 ActiveSaklar(saklarSambungans[i], rotasiValues[i]);
+            }
+
+            foreach (TriggerComplete triggers in triggerCompletes)
+            {
+                if (triggers.isComplete)
+                {
+                    Debug.Log("COMPLETE PUZZLE");
+                }
             }
         }
 
