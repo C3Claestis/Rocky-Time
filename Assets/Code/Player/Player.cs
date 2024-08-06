@@ -78,12 +78,12 @@ public class Player : MonoBehaviour
         if (horizontal > 0 && !facingRight)
         {
             facingRight = true;
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         }
         else if (horizontal < 0 && facingRight)
         {
             facingRight = false;
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-0.05f, 0.05f, 0.05f);
         }
     }
 
